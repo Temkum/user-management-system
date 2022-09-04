@@ -15,6 +15,12 @@
 .navbar a {
   color: white;
 }
-.navbar a :hover {
+.navbar a:hover {
   color: aqua;
+}
+
+.center-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

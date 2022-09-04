@@ -22,8 +22,18 @@ $white: #fff;
     a {
         color: white;
 
-        :hover {
+        &:hover {
             color: aqua;
         }
     }
+}
+
+// .form-width {
+//     width: 50%;
+// }
+
+.center-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
