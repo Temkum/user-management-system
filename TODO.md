@@ -37,3 +37,8 @@ npm install sass-loader`
 - after modifying the factory files and db seeders then run: `php artisan db:seed`
 
 > if you want to start off with a clean db run `php artisan migrate:refresh --seed` if you want to also seed after refreshing your db
+
+## display users as admin
+
+- setup routes
+- first create controllers with resource flag `php artisan make:controller Admin\\UserController -r`
