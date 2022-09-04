@@ -18,3 +18,5 @@ npm install sass-loader`
 - modify webpack.mix.js file to compile sass and then run `npm run dev`
 
 ## Build the dashboard ui
+
+## User registration - login and logout

@@ -16,6 +16,7 @@
     <!-- Styles -->
     {{-- <link rel="stylesheet" href="../sass/app.css" /> --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 </head>
 
 <body class="antialiased">
@@ -29,7 +30,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
-                    <li class="nav-item">
+                    <li class="nav-item text-white">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
@@ -42,6 +43,12 @@
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                             @auth
                                 <a href="{{ url('/home') }}" class="text-sm">Home</a>
+                                <a href="{{ route('logout') }}" class="text-sm"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+                                <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none">
+                                    @csrf
+                                </form>
                             @else
                                 <a href="{{ route('login') }}" class="text-sm">Log in</a>
 

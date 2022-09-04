@@ -1,27 +1,31 @@
 @import "~bootstrap/scss/bootstrap";
 
 // variables
-:root {
-  --navBar: #1e2632;
-  --background: #f7f8f9;
-  --text: #3a3c42;
-}
+/* $navBar: #1e2632;
+$background: #f7f8f9;
+$text: #3a3c42;
+$white: #fff;
+
 
 .text-white {
   color: #fff;
 }
 
 .body {
-  background-color: var(--background);
-  color: var(--text);
+  background-color: $background;
+  color: $text;
 }
 
 .navbar {
-  background-color: var(--navBar);
+  background-color: $navBar;
   box-shadow: 0 5px 10px 0 rgba(204, 204, 204, .3);
   margin-bottom: 40px;
 
   a {
     color: white;
+
+    :hover {
+      color: aqua;
+    }
   }
-}
+} */
