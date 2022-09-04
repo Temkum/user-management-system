@@ -7,6 +7,10 @@
   color: #3a3c42;
 }
 
+.hide {
+  display: none;
+}
+
 .navbar {
   background-color: #1e2632;
   box-shadow: 0 5px 10px 0 rgba(204, 204, 204, 0.3);
@@ -19,8 +23,17 @@
   color: aqua;
 }
 
+h1 {
+  margin-bottom: 20px;
+}
+
 .center-item {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(204, 204, 204, 0.8);
+  padding: 20px 40px;
 }

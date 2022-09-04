@@ -42,3 +42,5 @@ npm install sass-loader`
 
 - setup routes
 - first create controllers with resource flag `php artisan make:controller Admin\\UserController -r`
+
+## create crud UI for admin panel
