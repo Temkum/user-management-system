@@ -28,8 +28,9 @@
                         <td>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-primary"
                                 role="button">Edit</a>
-                            <button class="btn btn-sm btn-danger"
-                                onclick="e.preventDefault(); document.getElementById('delete-user-form-{{ $user->id }}').submit();">Delete</button>
+                            <button class="btn btn-sm btn-danger" role="button"
+                                onclick="event.preventDefault(); 
+                                document.getElementById('delete-user-form-{{ $user->id }}').submit();">Delete</button>
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="post" class="hide"
                                 id="delete-user-form-{{ $user->id }}">
                                 @csrf
@@ -40,5 +41,6 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $users->links() }}
     </div>
 @endsection

@@ -44,3 +44,7 @@ npm install sass-loader`
 - first create controllers with resource flag `php artisan make:controller Admin\\UserController -r`
 
 ## create crud UI for admin panel
+
+## delete method and pagination
+
+- seed data using tinker: `User::factory()->count(20)->create();`
