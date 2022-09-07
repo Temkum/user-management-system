@@ -29,14 +29,18 @@
 <div class="mb-3">
     @foreach ($roles as $role)
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="roles[]" value="{{ $role->id }}"
-                id="{{ $role->name }}"
+            <input type="checkbox" class="form-check-input @error('roles') is-invalid @enderror" name="roles[]"
+                value="{{ $role->id }}" id="{{ $role->name }}"
                 @isset($user) 
                     @if (in_array($role->id, $user->roles->pluck('id')->toArray()))
                         checked
                     @endif 
                 @endisset>
             <label for="{{ $role->name }}">{{ $role->name }}</label>
+
+            @error('roles')
+                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+            @enderror
         </div>
     @endforeach
 </div>

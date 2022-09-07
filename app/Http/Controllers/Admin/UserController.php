@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
 {
@@ -37,12 +38,17 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $user = User::create($request->except(['_token', 'roles']));
+        $validated_data = $request->validated();
+        
+        // $user = User::create($request->except(['_token', 'roles']));
+        $user = User::create($validated_data);
 
         // use roles relationship to grab the roles array from the request
         $user->roles()->sync($request->roles);
+
+        $request->session()->flash('success', "User created successfully!");
 
         return redirect(route('admin.users.index'));
     }
@@ -65,7 +71,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {        
         return view('admin.users.edit', ['roles'=> Role::all(), 'user' => User::find($id)]);
     }
 
@@ -80,9 +86,16 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        if (!$user) {
+            $request->session()->flash('error', 'You can not edit this user!');
+            return redirect(route('admin.users.index'));
+        }
+
         // don't pass in the roles since our db doesn't have it
         $user->update($request->except(['_token', 'roles']));
         $user->roles()->sync($request->roles); //add roles to db
+
+        $request->session()->flash('success', "User updated successfully!");
 
         return redirect(route('admin.users.index'));
     }
@@ -93,9 +106,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         User::destroy($id);
+
+        $request->session()->flash('success', "User has been deleted successfully!");
 
         return redirect(route('admin.users.index'));
     }

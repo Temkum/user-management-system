@@ -52,3 +52,7 @@ npm install sass-loader`
 ## assign roles: edit and create users
 
 > mutators allow you to mutate the state of a given field on a model
+
+## Flash message and form validation
+
+- add a notification system to push messages back to the user
