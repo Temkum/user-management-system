@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create', ['roles'=> Role::all()]);
     }
 
     /**
@@ -38,7 +39,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create($request->except(['_token', 'roles']));
+
+        // use roles relationship to grab the roles array from the request
+        $user->roles()->sync($request->roles);
+
+        return redirect(route('admin.users.index'));
     }
 
     /**
@@ -60,7 +66,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.users.edit', ['roles'=> Role::all(), 'user' => User::find($id)]);
     }
 
     /**
@@ -72,7 +78,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        // don't pass in the roles since our db doesn't have it
+        $user->update($request->except(['_token', 'roles']));
+        $user->roles()->sync($request->roles); //add roles to db
+
+        return redirect(route('admin.users.index'));
     }
 
     /**

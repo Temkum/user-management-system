@@ -48,3 +48,7 @@ npm install sass-loader`
 ## delete method and pagination
 
 - seed data using tinker: `User::factory()->count(20)->create();`
+
+## assign roles: edit and create users
+
+> mutators allow you to mutate the state of a given field on a model
