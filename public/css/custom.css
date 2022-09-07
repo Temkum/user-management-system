@@ -37,3 +37,12 @@ h1 {
   box-shadow: 0 2px 4px rgba(204, 204, 204, 0.8);
   padding: 20px 40px;
 }
+
+.sub-nav {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(204, 204, 204, 0.8);
+  margin-top: 40px;
+}
+.sub-nav a {
+  color: #000;
+}

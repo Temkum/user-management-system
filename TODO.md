@@ -56,3 +56,7 @@ npm install sass-loader`
 ## Flash message and form validation
 
 - add a notification system to push messages back to the user
+
+## protecting pages with gates
+
+- check users and grant access to prevent users from performing certain actions using laravel gates

@@ -3,6 +3,7 @@ $navBar: #1e2632;
 $background: #f7f8f9;
 $text: #3a3c42;
 $white: #fff;
+$primary: #000;
 
 
 .text-white {
@@ -40,8 +41,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-
-
 .center-item {
     display: flex;
     align-items: center;
@@ -51,4 +50,14 @@ h1 {
 .card {
     box-shadow: 0 2px 4px rgba(204, 204, 204, .8);
     padding: 20px 40px;
+}
+
+.sub-nav {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(204, 204, 204, .8);
+    margin-top: 40px;
+
+    a {
+        color: $primary;
+    }
 }

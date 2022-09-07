@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
                     <li class="nav-item text-white">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
@@ -62,6 +62,29 @@
         </div>
         </div>
     </nav>
+
+    @can('logged-in')
+        <nav class="navbar navbar-expand-lg sub-nav">
+            <div class="container">
+                <a class="navbar-brand" href="#">{{ config('app.name', 'User Management System') }}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+                        <li class="nav-item text-white">
+                            <a class="nav-link" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    @endcan
 
     <main class="container">
         @include('admin.users.partials.alerts')
