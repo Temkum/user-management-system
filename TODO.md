@@ -71,3 +71,5 @@ npm install sass-loader`
 ## email password reset to new users
 
 ## reset user password
+
+## email verification

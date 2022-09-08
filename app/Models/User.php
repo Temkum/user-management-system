@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-   /*  public function setPasswordAttribute($password)
+    /*  public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
     } */
@@ -54,11 +54,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Role');
     }
 
-     /**
-    * check if user has a role
-    * @param string $role
-    * @return bool
-    */
+    /**
+     * check if user has a role
+     * @param string $role
+     * @return bool
+     */
 
     public function hasAnyRole($role)
     {
@@ -67,11 +67,11 @@ class User extends Authenticatable
     }
 
     /**
-    * check if user has any given role
-    * @param array $role
-    * @return bool
-    */
-    
+     * check if user has any given role
+     * @param array $role
+     * @return bool
+     */
+
     public function hasAnyRoles($role)
     {
         # code...
