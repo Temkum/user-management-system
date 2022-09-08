@@ -22,10 +22,16 @@ class UserController extends Controller
             # code...
             dd('no access allowed');
         }
-        
+
         $users = User::paginate(10);
 
-        return view('admin.users.index', ['users' => $users]);
+        if (Gate::allows('is-admin')) {
+            # code...
+            return view('admin.users.index', ['users' => $users]);
+        }
+        
+        // return view('admin.users.index', ['users' => $users]);
+        dd('you need admin rights');
     }
 
     /**
@@ -35,7 +41,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create', ['roles'=> Role::all()]);
+        return view('admin.users.create', ['roles' => Role::all()]);
     }
 
     /**
@@ -47,7 +53,7 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $validated_data = $request->validated();
-        
+
         // $user = User::create($request->except(['_token', 'roles']));
         $user = User::create($validated_data);
 
@@ -77,8 +83,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {        
-        return view('admin.users.edit', ['roles'=> Role::all(), 'user' => User::find($id)]);
+    {
+        return view('admin.users.edit', ['roles' => Role::all(), 'user' => User::find($id)]);
     }
 
     /**

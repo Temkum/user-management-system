@@ -60,3 +60,8 @@ npm install sass-loader`
 ## protecting pages with gates
 
 - check users and grant access to prevent users from performing certain actions using laravel gates
+
+## protecting pages using roles
+
+- create custom middleware to restrict access based on role
+- modify user model
