@@ -69,3 +69,5 @@ npm install sass-loader`
 ## register user using laravel fortify actions
 
 ## email password reset to new users
+
+## reset user password
