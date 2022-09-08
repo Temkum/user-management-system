@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreUserRequest;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -30,7 +31,7 @@ class UserController extends Controller
             # code...
             return view('admin.users.index', ['users' => $users]);
         }
-        
+
         // return view('admin.users.index', ['users' => $users]);
         dd('you need admin rights');
     }
@@ -63,6 +64,9 @@ class UserController extends Controller
 
         // use roles relationship to grab the roles array from the request
         $user->roles()->sync($request->roles);
+
+        //send user pwd reset link
+        Password::sendResetLink($request->only(['email']));
 
         $request->session()->flash('success', "User created successfully!");
 
