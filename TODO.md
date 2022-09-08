@@ -65,3 +65,5 @@ npm install sass-loader`
 
 - create custom middleware to restrict access based on role
 - modify user model
+
+## register user using laravel fortify actions

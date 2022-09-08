@@ -25,6 +25,14 @@
             <span class="invalid-feedback" role="alert">{{ $message }}</span>
         @enderror
     </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+            name="password_confirmation" id="exampleInputPassword1" value="{{ old('password_confirmation') }}">
+        @error('password_confirmation')
+            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+        @enderror
+    </div>
 @endisset
 <div class="mb-3">
     @foreach ($roles as $role)
